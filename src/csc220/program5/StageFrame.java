@@ -18,8 +18,10 @@
  */
 package csc220.program5;
 
+
 import csc220.drawing.Camera;
 import csc220.list.List;
+import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 
@@ -37,7 +39,8 @@ public class StageFrame extends javax.swing.JFrame {
     public StageFrame() {
         initComponents();
         characters = new List<>();
-        characters.add(new csc220.program5.sample.RoundHead(10, 30, 50, 1000));
+        //characters.add(new csc220.program5.sample.RoundHead(10, 30, 50, 1000));
+        characters.add(new csc220.program5.tharpaj2020.Cars(100, 75, 150, 40, 1000, Color.BLUE));
         camera = new Camera();
         chosenCharacter = null;
         gameOver = false;
