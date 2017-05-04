@@ -1,7 +1,8 @@
 /* Aaron Tharp List class
  * 5/3/2017
  * Description: The purpose of this class is to provide the structure for adding and removing points to the animation path.
- * Acknowledgements: The csc220 program5 List class with a few modifications.
+ * Acknowledgements: The csc220 program5 List class with a few modifications. My code for addBeforeNext and remove
+                     was assisted by Seth Rhodes.
  */
 package csc220.program5.tharpaj2020;
 
@@ -56,21 +57,27 @@ public class List<E> extends csc220.list.List<E> {
         
         @Override
         public void remove() {
-            Node<E> tmp = new Node<>();
-            while(tmp != prevNode){
-                tmp = prevNode;
+            if(prevNode == null){
+                throw new IllegalStateException();
             }
-            if(prevNode == nextNode){
+            
+            if(prevNode == first){
+                first = nextNode;
+            }
+            else{
+                Node<E> tmp = first;
+                while(tmp.next != prevNode){
+                    tmp = tmp.next;
+                }
                 tmp.next = nextNode;
             }
-            if(first != prevNode){
-                first = nextNode;
-                prevNode = null;
+            
+            if(prevNode == last){
+                last = prevNode;
             }
-            if(last == prevNode){
-                last = nextNode;
-                prevNode = null;
-            }
+            
+            prevNode = null;
+            
         }
      }
    
